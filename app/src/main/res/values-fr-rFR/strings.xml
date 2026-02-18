@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Recipes</string>
-    <string name="app_title">Start Cooking</string>
-    <string name="unlimited_recipes">UNLIMITED PREMIUM RECIPES</string>
-    <string name="button_login">Login</string>
-    <string name="button_signup">Sign up</string>
-    <string name="sign_up">signe_up</string>
-    <string name="signup_subtitle">Create a new account</string>
+    <string name="app_name">Recettes</string>
+    <string name="app_title">Allons Cuisiner</string>
+    <string name="unlimited_recipes">RECETTES PREMIUM ILLIMITÉES</string>
+    <string name="button_login">Se connecter</string>
+    <string name="button_signup">S\'inscrire</string>
+    <string name="sign_up">S\'inscrire</string>
+    <string name="signup_subtitle">Créer un nouveau compte</string>
     <string name="your_name">Your name</string>
     <string name="person_icon">person_icon</string>
     <string name="your_email">Your email</string>
