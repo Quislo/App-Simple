@@ -20,4 +20,5 @@
     <string name="sign_in">Sign in</string>
     <string name="don_t_have_an_account">don\'t hava an account</string>
     <string name="search_by_recipes">Search by recipes</string>
+    <string name="newly_added_recipes">Newly added recipes</string>
 </resources>

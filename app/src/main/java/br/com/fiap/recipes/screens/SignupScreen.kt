@@ -26,18 +26,24 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import br.com.fiap.recipes.R
+import br.com.fiap.recipes.navigation.Destination
 import br.com.fiap.recipes.ui.theme.RecipesTheme
 
 
 @Composable
-fun SignupScreen(){
+fun SignupScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -56,7 +62,7 @@ fun SignupScreen(){
             TitleComponent( )
             Spacer(modifier = Modifier.height(32.dp))
             UserImage()
-            SigneupUserForm()
+            SigneupUserForm(navController)
 
         }
     }
@@ -71,7 +77,7 @@ fun SignupScreen(){
 @Composable
 fun SignupScreenPreview(){
     RecipesTheme {
-        SignupScreen()
+        SignupScreen(rememberNavController())
     }
 }
 // *** Componente 1 - Título da tela ***
@@ -147,7 +153,16 @@ private fun UserImagePreview() {
 
 
 @Composable
-fun SigneupUserForm(modifier: Modifier = Modifier){
+fun SigneupUserForm(navController: NavController){
+    var nameState = remember {
+        mutableStateOf("")
+    }
+    var emailState = remember {
+        mutableStateOf("")
+    }
+    var passwordState = remember {
+        mutableStateOf("")
+    }
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -155,8 +170,10 @@ fun SigneupUserForm(modifier: Modifier = Modifier){
     ){
         // Caixa de texto para o nome do usuário
         OutlinedTextField(
-            value = "",
-            onValueChange = {},
+            value = nameState.value,
+            onValueChange = {name ->
+                nameState.value = name
+            },
             modifier = Modifier
                 .fillMaxWidth(),
             label = {
@@ -178,8 +195,10 @@ fun SigneupUserForm(modifier: Modifier = Modifier){
             )
         // Caixa de texto para o Email
         OutlinedTextField(
-            value = "",
-            onValueChange = {},
+            value = emailState.value,
+            onValueChange = {email ->
+                emailState.value = email
+            },
             modifier = Modifier
                 .fillMaxWidth(),
             label = {
@@ -199,10 +218,12 @@ fun SigneupUserForm(modifier: Modifier = Modifier){
                 )
             }
         )
-        // Caixa de texto para o Email
+        // Caixa de texto para a Senha
         OutlinedTextField(
-            value = "",
-            onValueChange = {},
+            value = passwordState.value,
+            onValueChange = {passworld ->
+                passwordState.value = passworld
+            },
             modifier = Modifier
                 .fillMaxWidth(),
             label = {
@@ -233,7 +254,9 @@ fun SigneupUserForm(modifier: Modifier = Modifier){
         )
         Spacer(modifier = Modifier.height(32.dp))
         Button(
-            onClick = {},
+            onClick = {
+                navController.navigate(Destination.LoginScreen.route)
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
@@ -261,7 +284,7 @@ fun SigneupUserForm(modifier: Modifier = Modifier){
 @Composable
 private fun SigneupUserFormPreview() {
     RecipesTheme {
-        SigneupUserForm()
+        SigneupUserForm(rememberNavController())
     }
 }
 
