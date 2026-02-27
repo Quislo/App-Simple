@@ -28,11 +28,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import br.com.fiap.recipes.R
+import br.com.fiap.recipes.navigation.Destination
 import br.com.fiap.recipes.ui.theme.RecipesTheme
 
 @Composable
-fun InitialScreen() {
+fun InitialScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -80,7 +84,9 @@ fun InitialScreen() {
                 Spacer(modifier = Modifier.height(16.dp))
                 Row {
                     Button(
-                        onClick = {},
+                        onClick = {
+                            navController.navigate(Destination.LoginScreen.route)
+                        },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = MaterialTheme
                                 .colorScheme.primary
@@ -102,7 +108,9 @@ fun InitialScreen() {
                     }
                     Spacer(modifier = Modifier.width(8.dp))
                     Button(
-                        onClick = {},
+                        onClick = {
+                            navController.navigate(Destination.SignupScreen.route)
+                        },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = MaterialTheme.colorScheme.tertiary
                         ),
@@ -135,14 +143,10 @@ fun InitialScreen() {
     }
 }
 
-@Preview(
-    showBackground = true,
-    uiMode = Configuration.UI_MODE_NIGHT_NO,
-    locale = "en"
-)
+@Preview
 @Composable
-fun InitialScreenPreview() {
+fun InitialSreenPreview(){
     RecipesTheme {
-        InitialScreen()
+        InitialScreen(rememberNavController())
     }
 }
